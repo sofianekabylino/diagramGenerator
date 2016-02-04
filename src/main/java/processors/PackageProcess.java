@@ -1,8 +1,9 @@
 package processors;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
-import diagramGen.diagramGen.Pack;
+import diagramGen.diagramGen.CommonStatic;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtPackage;
 import spoon.reflect.reference.CtTypeReference;
@@ -14,22 +15,28 @@ public class PackageProcess extends AbstractProcessor<CtPackage> {
 	public void process(CtPackage element) {
 
 		String packag = element.getQualifiedName();
-		if (!Pack.mapPackage.containsValue(packag)) {
-			Pack.mapPackage.put(Pack.key, packag);
+		if (!packag.equals("") && !CommonStatic.mapPackage.containsKey(packag)) {
+			CommonStatic.mapPackage.put(packag, CommonStatic.key);
 		}
-		Pack.key++;
-		int k = Pack.key;
-		for (Integer str : Pack.mapPackage.keySet()) {
-			if (element.getSimpleName().contains(Pack.mapPackage.get(str))) {
+		CommonStatic.key++;
+		int k = CommonStatic.key;
+		for (String str : CommonStatic.mapPackage.keySet()) {
+			if (element.getSimpleName().contains(str)) {
 				for (CtTypeReference t : element.getReferencedTypes()) {
 					if (!t.isPrimitive() && t.getPackage() != null
-							&& !Pack.mapPackage.containsValue(t.getPackage().getSimpleName())) {
+							&& !CommonStatic.mapPackage.containsKey(t.getPackage().getSimpleName())) {
 						lst.add(t.getPackage().getSimpleName());
 					}
 				}
 			}
 		}
-		Pack.key = k;
+		CommonStatic.key = k;
+		
+		Iterator<String> i = PackageProcess.lst.iterator();
+		while (i.hasNext()) {
+			CommonStatic.mapPackage.put(i.next(), CommonStatic.key++);
+		}
+		
 	}
 
 }

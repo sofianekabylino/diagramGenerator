@@ -14,21 +14,25 @@ public class App {
 	public static void main(String[] args) throws InterruptedException, URISyntaxException {
 
 		Runner.run();
-
-		for (Integer str : Pack.mapDependencies.keySet()) {
-			System.out.println(Pack.mapDependencies.get(str)+" *** TO ***"+Pack.mapDependencies.values().size());
+		
+		for (String str : CommonStatic.mapPackage.keySet()) {
+			System.out.println(CommonStatic.mapPackage.get(str)+" ** "+str);
 		}
 		
 		JSONArrayCreator j = new JSONArrayCreator();
 		j.createJsonArray();
-
+		
+		
+		
 		String htmlFile = "";
 		String JsFile = "";
 
 		HtmlFileGen.htmlFileGen();
 		JsFileGen.jsFileGen();
 
-//		BrowserLauncher.launchBrowser();
+		System.out.println(JSONArrayCreator.jaPackages);
+		System.out.println(JSONArrayCreator.jaDependencies);
+		BrowserLauncher.launchBrowser();
 
 	}
 }

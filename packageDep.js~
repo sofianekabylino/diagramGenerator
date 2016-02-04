@@ -59,7 +59,7 @@ myDiagram.nodeTemplate =
 $(go.Node, "Auto",  // the whole node panel
 // define the node's outer shape, which will surround the TextBlock
 $(go.Shape, "Circle",
- { fill: "CornflowerBlue", stroke: "black", spot1: new go.Spot(0, 0, 5, 5), spot2: new go.Spot(1, 1, -5, -5) }),
+ { new go.Binding("fill", "fill"), stroke: "black", spot1: new go.Spot(0, 0, 5, 5), spot2: new go.Spot(1, 1, -5, -5) }),
  $(go.TextBlock,
 { font: "bold 10pt helvetica, bold arial, sans-serif", textAlign: "center", maxSize: new go.Size(100, NaN) },
 new go.Binding("text", "text"))
@@ -85,33 +85,8 @@ new go.Binding("text", "text"))
 )
  );
 // create the model for the concept map
-var nodeDataArray =[{"text":"MultiAgentsParticules.bille","key":1},{"text":"MultiAgentsParticules.hotPursuit","key":2},{"text":"MultiAgentsParticules.part1","key":3},{"text":"MultiAgentsParticules.wator","key":4},{"text":"MultiAgentsParticules","key":5},{"text":"","key":6},{"text":"java.util","key":7},{"text":"javafx.collections","key":8},{"text":"javafx.scene.layout","key":9},{"text":"javafx.event","key":10},{"text":"javafx.animation","key":11},{"text":"javafx.application","key":12},{"text":"javafx.scene.paint","key":13},{"text":"javafx.stage","key":14},{"text":"java.awt","key":15},{"text":"java.lang","key":16},{"text":"javafx.scene.shape","key":17},{"text":"javafx.scene","key":18},{"text":"junit.framework","key":19},{"text":"javax.swing","key":20},{"text":"javafx.util","key":21}] ;
- var linkDataArray = [
-{ from: 1, to: 2, text: 'represent' },
-{ from: 2, to: 3, text: 'is' },
-{ from: 2, to: 4, text: 'is' },
-{ from: 2, to: 5, text: 'is' },
-{ from: 2, to: 6, text: 'includes' },
-{ from: 2, to: 10, text: 'necessary for' },
-{ from: 2, to: 12, text: 'necessary for' },
-{ from: 4, to: 5, text: 'combine to form' },
-{ from: 4, to: 6, text: 'include' },
-{ from: 4, to: 7, text: 'are' },
-{ from: 4, to: 8, text: 'are' },
-{ from: 4, to: 9, text: 'are' },
-{ from: 5, to: 9, text: 'are' },
-{ from: 5, to: 11, text: 'may be' },
-{ from: 7, to: 13, text: 'in' },
-{ from: 7, to: 14, text: 'in' },
-{ from: 7, to: 19, text: 'begin with' },
-{ from: 8, to: 15, text: 'with' },
-{ from: 8, to: 16, text: 'with' },
-{ from: 9, to: 17, text: 'aids' },
-{ from: 11, to: 18, text: 'show' },
-{ from: 12, to: 19, text: 'begins with' },
-{ from: 17, to: 18, text: 'needed to see' },
-{ from: 18, to: 20, text: 'between' },
-{ from: 18, to: 21, text: 'between' }];
+var nodeDataArray =[{"text":"MultiAgentsParticules.bille","key":1},{"text":"java.util","key":22},{"text":"javafx.collections","key":23},{"text":"MultiAgentsParticules.part1","key":3},{"text":"javafx.scene.layout","key":24},{"text":"javafx.event","key":25},{"text":"javafx.animation","key":26},{"text":"javafx.application","key":27},{"text":"javafx.scene.paint","key":28},{"text":"javafx.stage","key":29},{"text":"java.awt","key":30},{"text":"MultiAgentsParticules","key":5},{"text":"java.lang","key":31},{"text":"javafx.scene.shape","key":32},{"text":"javafx.scene","key":33},{"text":"MultiAgentsParticules.wator","key":4},{"text":"MultiAgentsParticules.hotPursuit","key":2},{"text":"junit.framework","key":34},{"text":"javax.swing","key":35},{"text":"javafx.util","key":36}] ;
+ var linkDataArray = [{"from":1,"to":5,"text":"import"},{"from":1,"to":22,"text":"import"},{"from":5,"to":22,"text":"import"},{"from":5,"to":1,"text":"import", "fill":"red"},{"from":5,"to":30,"text":"import"},{"from":5,"to":2,"text":"import"},{"from":5,"to":31,"text":"import"},{"from":2,"to":30,"text":"import"},{"from":2,"to":5,"text":"import"},{"from":2,"to":31,"text":"import"},{"from":3,"to":34,"text":"import"},{"from":3,"to":31,"text":"import"},{"from":5,"to":34,"text":"import"},{"from":5,"to":3,"text":"import"},{"from":5,"to":4,"text":"import"},{"from":4,"to":30,"text":"import"},{"from":4,"to":5,"text":"import"},{"from":4,"to":22,"text":"import"},{"from":5,"to":27,"text":"import"},{"from":5,"to":23,"text":"import"},{"from":5,"to":35,"text":"import"},{"from":5,"to":32,"text":"import"},{"from":5,"to":24,"text":"import"},{"from":5,"to":26,"text":"import"},{"from":5,"to":36,"text":"import"},{"from":5,"to":33,"text":"import"},{"from":5,"to":25,"text":"import"},{"from":5,"to":28,"text":"import"},{"from":5,"to":29,"text":"import"}];
 myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 }
 init();
