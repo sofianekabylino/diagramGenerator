@@ -24,7 +24,7 @@ public class PackageProcess extends AbstractProcessor<CtPackage> {
 			if (element.getSimpleName().contains(str)) {
 				for (CtTypeReference t : element.getReferencedTypes()) {
 					if (!t.isPrimitive() && t.getPackage() != null
-							&& !CommonStatic.mapPackage.containsKey(t.getPackage().getSimpleName())) {
+							&& CommonStatic.mapPackage.containsKey(t.getPackage().getSimpleName())) {
 						lst.add(t.getPackage().getSimpleName());
 					}
 				}
