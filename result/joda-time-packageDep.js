@@ -41,8 +41,8 @@ margin: 4 })
 )
 );
 // create the model for the concept map
-var nodeDataArray =[{"text":"org.jsoup.nodes","key":3},{"text":"org.jsoup.safety","key":5},{"text":"org.jsoup.helper","key":2},{"text":"org.jsoup.parser","key":4},{"text":"org.jsoup.select","key":6},{"text":"org.jsoup.examples","key":1}] ;
- var linkDataArray = [{"from":1,"to":6},{"from":1,"to":2},{"from":1,"to":3},{"from":2,"to":4},{"from":2,"to":3},{"from":2,"to":6},{"from":3,"to":4},{"from":3,"to":2},{"from":3,"to":6},{"from":4,"to":3},{"from":4,"to":6},{"from":4,"to":2},{"from":5,"to":6},{"from":5,"to":3},{"from":5,"to":2},{"from":5,"to":4},{"from":6,"to":3},{"from":6,"to":4},{"from":6,"to":2}];
+var nodeDataArray =[{"text":"org.joda.time.field","key":4},{"text":"org.joda.time.convert","key":3},{"text":"org.joda.time.tz","key":6},{"text":"org.joda.time.chrono","key":2},{"text":"org.joda.time.base","key":1},{"text":"org.joda.time.format","key":5}] ;
+ var linkDataArray = [{"from":1,"to":3},{"from":1,"to":4},{"from":1,"to":5},{"from":1,"to":2},{"from":2,"to":4},{"from":2,"to":5},{"from":3,"to":4},{"from":3,"to":5},{"from":3,"to":2},{"from":5,"to":4},{"from":6,"to":2},{"from":6,"to":5}];
 myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 var myOverview = $(go.Overview, 'myOverviewDiv',{ observed: myDiagram });}
 init();

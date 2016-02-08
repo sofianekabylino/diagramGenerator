@@ -22,7 +22,7 @@ public class JsFileGen {
     	          +"contentAlignment: go.Spot.Center,  // align document to the center of the viewport\n"
     	          +"layout:\n"
     	            +"$(go.ForceDirectedLayout,  // automatically spread nodes apart\n"
-    	              +"{ defaultSpringLength: 500, defaultElectricalCharge: 100 })\n"
+    	              +"{ defaultSpringLength: 200, defaultElectricalCharge: 100 })\n"
     	        +"});\n"
     	    +"// define each Node's appearance\n"
     	    +"myDiagram.nodeTemplate =\n"
@@ -40,7 +40,7 @@ public class JsFileGen {
     	      + "{ \n"
   	        	+ "curve: go.Link.Bezier},\n"
     	        +"$(go.Shape,  // the link shape\n"
-    	          +"{ stroke: \"black\" }),\n"
+    	          +"{ stroke: 'black', strokeDashArray: [5,10]  }),\n"
     	        +"$(go.Shape,  // the arrowhead\n"
     	          +"{ toArrow: \"standard\", stroke: null }),\n"
     	        +"$(go.Panel, \"Auto\",\n"
@@ -51,8 +51,7 @@ public class JsFileGen {
     	            +"{ textAlign: \"center\",\n"
     	              +"font: \"10pt helvetica, arial, sans-seri\",\n"
     	              +"stroke: \"#555555\",\n"
-    	              +"margin: 4 },\n"
-    	            +"new go.Binding(\"text\", \"text\"))\n"
+    	              +"margin: 4 })\n"
     	        +")\n"
     	        + ");\n"
     	      
@@ -60,9 +59,10 @@ public class JsFileGen {
     +"var nodeDataArray ="+JSONArrayCreator.jaPackages+" ;\n"
    +" var linkDataArray = "+JSONArrayCreator.jaDependencies+";\n"
    +"myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);\n"
+   + "var myOverview = $(go.Overview, 'myOverviewDiv',{ observed: myDiagram });"
   +"}\n"
 +"init();";
-    
+    // Ecriture du fichier Js
     File f = new File ("packageDep.js");
     try
     {

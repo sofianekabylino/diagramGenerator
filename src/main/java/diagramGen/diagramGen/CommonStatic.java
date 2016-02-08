@@ -5,17 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import spoon.reflect.reference.CtTypeReference;
+
 public class CommonStatic {
 
 	public static Map<String, Integer> mapPackage = new HashMap<String, Integer>();
 	
 	public static List<List<Integer>> mapDependencies = new LinkedList<List<Integer>>();
 	
-//	static JSONArray ja = new JSONArray();
+	public static Map<CtTypeReference, Integer> mapClasses = new HashMap<CtTypeReference, Integer>();
 	
-	static String nodeDataArray = "";
+	public static int compteurPackage = 1;
 	
-	static String linkDataArray = "";
-	
-	public static int key = 1;
+	public static int compteurClass = 1;
 }

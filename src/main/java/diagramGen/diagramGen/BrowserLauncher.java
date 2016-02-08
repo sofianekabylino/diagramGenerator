@@ -8,9 +8,7 @@ public class BrowserLauncher {
 
 	public static void launchBrowser() {
 		if (Desktop.isDesktopSupported()) {
-
 			Desktop desktop = Desktop.getDesktop();
-
 			if (desktop.isSupported(Desktop.Action.BROWSE)) {
 				try {
 					desktop.open(new File("packageDepHtml.html"));

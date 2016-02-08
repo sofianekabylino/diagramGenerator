@@ -3,6 +3,7 @@ package diagramGen.diagramGen;
 import java.net.URISyntaxException;
 
 import filesGenerator.HtmlFileGen;
+import filesGenerator.JsClassDiagramFileGen;
 import filesGenerator.JsFileGen;
 import spoon.reflect.reference.CtTypeReference;
 
@@ -15,10 +16,6 @@ public class App {
 
 		Runner.run();
 		
-		for (String str : CommonStatic.mapPackage.keySet()) {
-			System.out.println(CommonStatic.mapPackage.get(str)+" ** "+str);
-		}
-		
 		JSONArrayCreator j = new JSONArrayCreator();
 		j.createJsonArray();
 		
@@ -27,11 +24,13 @@ public class App {
 		String htmlFile = "";
 		String JsFile = "";
 
-		HtmlFileGen.htmlFileGen();
+		// Génération des fichiers
 		JsFileGen.jsFileGen();
+		JsClassDiagramFileGen.jsClassDiagramFileGen();
+		HtmlFileGen.htmlFileGen();
 
-		System.out.println(JSONArrayCreator.jaPackages);
-		System.out.println(JSONArrayCreator.jaDependencies);
+//		System.out.println(JSONArrayCreator.jaPackages);
+//		System.out.println(JSONArrayCreator.jaDependencies);
 		BrowserLauncher.launchBrowser();
 
 	}

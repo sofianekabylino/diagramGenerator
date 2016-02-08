@@ -20,7 +20,11 @@ public class HtmlFileGen {
 		              + "<div id=\"sample\">\n"
 		                + "<div id=\"myDiagram\" style=\"background-color: whitesmoke; border: solid 1px black; width: 100%; height: 700px\">\n"
 		                + "</div>\n"
+		                + "<!-- la div de l'overview -->\n"
+					
 		              + "</div>\n"
+		              +"<div id='myOverviewDiv' style='background-color: white; border: solid 1px black; height: 200px; width: 300px; padding-left: 20px;'>\n"
+		              +"</div>\n"
 		              + "<script src=\"packageDep.js\"></script>\n"
 		            + "</body>\n"
 		        + "</html>\n";
