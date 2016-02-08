@@ -21,30 +21,32 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 	public static JSONArray relationship = new JSONArray();
 	public static boolean[][] alreadyFound;
 	public static Set<Integer> listeClassesUtilisees = new HashSet<Integer>();
-	
+
 	@Override
 	public void process(CtClass classe) {
 		Map<CtTypeReference, Integer> map = AnalyseProcessorClasses.map;
 		alreadyFound = new boolean[CommonStatic.compteurClass][CommonStatic.compteurClass];
-		
+
 		// On regarde les super classes
 		if (classe.getSuperclass() != null) {
 
 			if (map.get(classe.getSuperclass()) != null) {
-				if (!alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())]) {
-					listeClassesUtilisees.add(map.get(classe.getReference()));
-					listeClassesUtilisees.add(map.get(map.get(classe.getSuperclass())));
+				if (map.get(classe.getReference()) != null) {
+					if (!alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())]) {
+						listeClassesUtilisees.add(map.get(classe.getReference()));
+						listeClassesUtilisees.add(map.get(map.get(classe.getSuperclass())));
 
-					JSONObject object = new JSONObject();
-					try {
-						object.put("from", map.get(classe.getReference()));
-						object.put("to", map.get(classe.getSuperclass()));
-						object.put("relationship", "generalization");
+						JSONObject object = new JSONObject();
+						try {
+							object.put("from", map.get(classe.getReference()));
+							object.put("to", map.get(classe.getSuperclass()));
+							object.put("relationship", "generalization");
 
-						relationship.put(object);
-						alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())] = true;
-					} catch (JSONException e) {
-						e.printStackTrace();
+							relationship.put(object);
+							alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())] = true;
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
@@ -57,10 +59,12 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 					listeClassesUtilisees.add(map.get(classe.getReference()));
 					listeClassesUtilisees.add(map.get(ref));
 
-					/*System.out.println("**********");
-					System.out.println(classe.getReference());
-					System.out.println(ref);
-					System.out.println("**********");*/
+					/*
+					 * System.out.println("**********");
+					 * System.out.println(classe.getReference());
+					 * System.out.println(ref);
+					 * System.out.println("**********");
+					 */
 					if (!alreadyFound[map.get(classe.getReference())][map.get(ref)]) {
 
 						JSONObject object = new JSONObject();
@@ -89,19 +93,25 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 						if (map.get(r) != null) {
 							listeClassesUtilisees.add(map.get(classe.getReference()));
 							listeClassesUtilisees.add(map.get(r));
-							
+
 							// on supprime l'attribut dans la classe
-							//AnalyseProcessorClasses.array.;
+							// AnalyseProcessorClasses.array.;
 							for (int i = 0; i < AnalyseProcessorClasses.array.length(); i++) {
 								try {
-									//System.out.println(AnalyseProcessorClasses.array.getJSONObject(i).get("key") + " " +  map.get(classe.getReference()));
+									// System.out.println(AnalyseProcessorClasses.array.getJSONObject(i).get("key")
+									// + " " + map.get(classe.getReference()));
 
-									if ((Integer)AnalyseProcessorClasses.array.getJSONObject(i).get("key") == map.get(classe.getReference()).intValue()) {
-										for(int j = 0 ; j < ((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")).length() ; j++){
-											//System.out.println(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")));
+									if ((Integer) AnalyseProcessorClasses.array.getJSONObject(i).get("key") == map
+											.get(classe.getReference()).intValue()) {
+										for (int j = 0; j < ((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
+												.get("properties")).length(); j++) {
+											// System.out.println(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")));
 
-											if(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")).getJSONObject(j).get("type") == attribut.getType()){
-												((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")).remove(j);
+											if (((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
+													.get("properties")).getJSONObject(j).get("type") == attribut
+															.getType()) {
+												((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
+														.get("properties")).remove(j);
 											}
 										}
 									}
@@ -132,14 +142,20 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 						// on supprime l'attribut dans la classe
 						for (int i = 0; i < AnalyseProcessorClasses.array.length(); i++) {
 							try {
-								//System.out.println(AnalyseProcessorClasses.array.getJSONObject(i).get("key") + " " +  map.get(classe.getReference()));
+								// System.out.println(AnalyseProcessorClasses.array.getJSONObject(i).get("key")
+								// + " " + map.get(classe.getReference()));
 
-								if ((Integer)AnalyseProcessorClasses.array.getJSONObject(i).get("key") == map.get(classe.getReference()).intValue()) {
-									for(int j = 0 ; j < ((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")).length() ; j++){
-										//System.out.println(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")));
+								if ((Integer) AnalyseProcessorClasses.array.getJSONObject(i).get("key") == map
+										.get(classe.getReference()).intValue()) {
+									for (int j = 0; j < ((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
+											.get("properties")).length(); j++) {
+										// System.out.println(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")));
 
-										if(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")).getJSONObject(j).get("type") == attribut.getType()){
-											((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")).remove(j);
+										if (((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
+												.get("properties")).getJSONObject(j).get("type") == attribut
+														.getType()) {
+											((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
+													.get("properties")).remove(j);
 										}
 									}
 								}

@@ -48,7 +48,7 @@ public class AnalyseProcessorInterfaces extends AbstractProcessor<CtInterface> {
 				json.put("methods", methodsJson);
 				
 				AnalyseProcessorClasses.array.put(json);
-				AnalyseProcessorClasses.map.put(inter.getReference(),CommonStatic.compteurClass);
+				CommonStatic.mapClasses.put(inter.getReference(),CommonStatic.compteurClass);
 				CommonStatic.compteurClass++;
 			} catch (JSONException e) {
 				e.printStackTrace();

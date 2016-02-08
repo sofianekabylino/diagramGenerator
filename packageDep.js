@@ -41,8 +41,8 @@ margin: 4 })
 )
 );
 // create the model for the concept map
-var nodeDataArray =[{"text":"MultiAgentsParticules.bille","key":11},{"text":"MultiAgentsParticules","key":10},{"text":"MultiAgentsParticules.wator","key":12},{"text":"MultiAgentsParticules.hotPursuit","key":13}] ;
- var linkDataArray = [{"from":11,"to":10},{"from":10,"to":11},{"from":10,"to":13},{"from":13,"to":10},{"from":10,"to":12},{"from":12,"to":10}];
+var nodeDataArray =[{"text":"org.jsoup.nodes","key":3},{"text":"org.jsoup.safety","key":5},{"text":"org.jsoup.helper","key":2},{"text":"org.jsoup.parser","key":4},{"text":"org.jsoup.select","key":6},{"text":"org.jsoup.examples","key":1}] ;
+ var linkDataArray = [{"from":1,"to":6},{"from":1,"to":2},{"from":1,"to":3},{"from":2,"to":4},{"from":2,"to":3},{"from":2,"to":6},{"from":3,"to":4},{"from":3,"to":2},{"from":3,"to":6},{"from":4,"to":3},{"from":4,"to":6},{"from":4,"to":2},{"from":5,"to":6},{"from":5,"to":3},{"from":5,"to":2},{"from":5,"to":4},{"from":6,"to":3},{"from":6,"to":4},{"from":6,"to":2}];
 myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 var myOverview = $(go.Overview, 'myOverviewDiv',{ observed: myDiagram });}
 init();
