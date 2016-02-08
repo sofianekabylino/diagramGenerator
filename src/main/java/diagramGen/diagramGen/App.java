@@ -29,7 +29,7 @@ public class App {
 		JsClassDiagramFileGen.jsClassDiagramFileGen();
 		HtmlFileGen.htmlFileGen();
 
-//		System.out.println(JSONArrayCreator.jaPackages);
+		System.out.println(JSONArrayCreator.jaPackages);
 //		System.out.println(JSONArrayCreator.jaDependencies);
 		BrowserLauncher.launchBrowser();
 
