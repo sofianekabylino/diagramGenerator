@@ -30,23 +30,21 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 		// On regarde les super classes
 		if (classe.getSuperclass() != null) {
 
-			if (map.get(classe.getSuperclass()) != null) {
-				if (map.get(classe.getReference()) != null) {
-					if (!alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())]) {
-						listeClassesUtilisees.add(map.get(classe.getReference()));
-						listeClassesUtilisees.add(map.get(map.get(classe.getSuperclass())));
+			if (map.get(classe.getSuperclass()) != null && map.get(classe.getReference()) != null) {
+				if (!alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())]) {
+					listeClassesUtilisees.add(map.get(classe.getReference()));
+					listeClassesUtilisees.add(map.get(map.get(classe.getSuperclass())));
 
-						JSONObject object = new JSONObject();
-						try {
-							object.put("from", map.get(classe.getReference()));
-							object.put("to", map.get(classe.getSuperclass()));
-							object.put("relationship", "generalization");
+					JSONObject object = new JSONObject();
+					try {
+						object.put("from", map.get(classe.getReference()));
+						object.put("to", map.get(classe.getSuperclass()));
+						object.put("relationship", "generalization");
 
-							relationship.put(object);
-							alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())] = true;
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
+						relationship.put(object);
+						alreadyFound[map.get(classe.getReference())][map.get(classe.getSuperclass())] = true;
+					} catch (JSONException e) {
+						e.printStackTrace();
 					}
 				}
 			}
@@ -145,8 +143,8 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 								// System.out.println(AnalyseProcessorClasses.array.getJSONObject(i).get("key")
 								// + " " + map.get(classe.getReference()));
 
-								if ((Integer) AnalyseProcessorClasses.array.getJSONObject(i).get("key") == map
-										.get(classe.getReference()).intValue()) {
+								if ((Integer) AnalyseProcessorClasses.array.getJSONObject(i).get("key") == map.
+										get(classe.getReference()).intValue()) {
 									for (int j = 0; j < ((JSONArray) AnalyseProcessorClasses.array.getJSONObject(i)
 											.get("properties")).length(); j++) {
 										// System.out.println(((JSONArray)AnalyseProcessorClasses.array.getJSONObject(i).get("properties")));
