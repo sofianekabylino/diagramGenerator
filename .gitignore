@@ -1,7 +1,6 @@
 target/
 .metadata/
 .settings/
-*.js
-*.html
-sponned/
+spooned/
 result/
+opl-elouadi-yousfi.tar.gz

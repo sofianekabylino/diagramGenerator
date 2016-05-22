@@ -1,7 +1,5 @@
 target/
 .metadata/
 .settings/
-*.js
-*.html
-sponned/
-results/
+spooned/
+result/
