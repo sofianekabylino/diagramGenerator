@@ -7,13 +7,13 @@
 </head>
 <body>
 <div id="sample">
-<div id="myDiagram" style="background-color: whitesmoke; border: solid 1px black; width: 100%; height: 1000px">
+<div id="myDiagram" style="background-color: whitesmoke; border: solid 1px black; width: 100%; height: 700px">
 </div>
 <!-- la div de l'overview -->
 </div>
 <div id='myOverviewDiv' style='background-color: white; border: solid 1px black; height: 200px; width: 300px; padding-left: 20px;'>
 </div>
-<script src="classDep.js"></script>
+<script src="packageDep.js"></script>
 </body>
 </html>
 

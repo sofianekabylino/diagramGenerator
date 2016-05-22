@@ -5,6 +5,7 @@ import processors.AnalyseProcessorInterfaces;
 import processors.GenerateLinkBetweenClassesProcessor;
 import processors.PackageProcess;
 import processors.PackagesDependenciesProcess;
+import processors.TestProcessor;
 import spoon.Launcher;
 
 public class Runner {
@@ -19,12 +20,13 @@ public class Runner {
 	 */
 	public static void run() {
 		final Launcher launcher = new Launcher();
-		final String[] arguments = { "-x", "-i", "/home/sofiane/Documents/Master/IAGL/OPL/simulateur_billes-master/src/tp1_idl" };
+		final String[] arguments = { "-x", "-i", "/home/sofiane/Documents/Master/IAGL/OPL/jsoup-master/src/main/java" };
 		launcher.addProcessor(new PackageProcess());
 		launcher.addProcessor(new PackagesDependenciesProcess());
 		launcher.addProcessor(new AnalyseProcessorClasses());
 		launcher.addProcessor(new AnalyseProcessorInterfaces());
 		launcher.addProcessor(new GenerateLinkBetweenClassesProcessor());
+		//launcher.addProcessor(new TestProcessor());
 		launcher.run(arguments);
 
 		// System.out.println(AnalyseProcessorClasses.array); // JSON avec les

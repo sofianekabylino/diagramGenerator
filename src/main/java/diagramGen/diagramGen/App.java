@@ -18,11 +18,6 @@ public class App {
 		
 		JSONArrayCreator j = new JSONArrayCreator();
 		j.createJsonArray();
-		
-		
-		
-		String htmlFile = "";
-		String JsFile = "";
 
 		// Génération des fichiers
 		JsFileGen.jsFileGen();

@@ -1,1 +1,6 @@
 target/
+.metadata/
+.settings/
+*.js
+*.html
+sponned/

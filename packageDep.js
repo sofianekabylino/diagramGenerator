@@ -41,8 +41,8 @@ margin: 4 })
 )
 );
 // create the model for the concept map
-var nodeDataArray =[{"text":"tp1_idl.models","key":2},{"text":"tp1_idl.exceptions","key":1},{"text":"tp1_idl.vue","key":4},{"text":"tp1_idl.simulation","key":3}] ;
- var linkDataArray = [{"from":2,"to":1},{"from":3,"to":2},{"from":3,"to":4},{"from":3,"to":1},{"from":4,"to":3},{"from":4,"to":2}];
+var nodeDataArray =[{"text":"org.jsoup.nodes","key":3},{"text":"org.jsoup.safety","key":5},{"text":"org.jsoup.helper","key":2},{"text":"org.jsoup.parser","key":4},{"text":"org.jsoup.select","key":6},{"text":"org.jsoup.examples","key":1}] ;
+ var linkDataArray = [{"from":1,"to":6},{"from":1,"to":2},{"from":1,"to":3},{"from":2,"to":4},{"from":2,"to":3},{"from":2,"to":6},{"from":3,"to":4},{"from":3,"to":2},{"from":3,"to":6},{"from":4,"to":3},{"from":4,"to":6},{"from":4,"to":2},{"from":5,"to":6},{"from":5,"to":3},{"from":5,"to":2},{"from":5,"to":4},{"from":6,"to":3},{"from":6,"to":4},{"from":6,"to":2}];
 myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 var myOverview = $(go.Overview, 'myOverviewDiv',{ observed: myDiagram });}
 init();

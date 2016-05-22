@@ -18,7 +18,7 @@ public class HtmlFileGen {
 		          + "</head>\n"
 		            + "<body>\n"
 		              + "<div id=\"sample\">\n"
-		                + "<div id=\"myDiagram\" style=\"background-color: whitesmoke; border: solid 1px black; width: 100%; height: 700px\">\n"
+		                + "<div id=\"myDiagram\" style=\"background-color: whitesmoke; border: solid 1px black; width: 100%; height: 1000px\">\n"
 		                + "</div>\n"
 		                + "<!-- la div de l'overview -->\n"
 					
