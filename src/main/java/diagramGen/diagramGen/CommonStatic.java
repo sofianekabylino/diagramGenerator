@@ -9,13 +9,14 @@ import spoon.reflect.reference.CtTypeReference;
 
 public class CommonStatic {
 
-	public static Map<String, Integer> mapPackage = new HashMap<String, Integer>();
+	public static Map<String, Integer> MAP_PACKAGE = new HashMap<String, Integer>();
 	
-	public static List<List<Integer>> mapDependencies = new LinkedList<List<Integer>>();
+	public static List<List<Integer>> MAP_DEPENDENCIES = new LinkedList<List<Integer>>();
 	
-	public static Map<CtTypeReference, Integer> mapClasses = new HashMap<CtTypeReference, Integer>();
+	@SuppressWarnings("rawtypes")
+	public static Map<CtTypeReference, Integer> MAP_CLASSES = new HashMap<CtTypeReference, Integer>();
 	
-	public static int compteurPackage = 1;
+	public static int COMPTEUR_PACKAGE = 1;
 	
-	public static int compteurClass = 1;
+	public static int COMPTEUR_CLASS = 1;
 }

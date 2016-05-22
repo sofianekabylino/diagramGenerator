@@ -21,27 +21,27 @@ public class PackageProcess extends AbstractProcessor<CtPackage> {
 		// element.getElements(new TypeFilter<CtClass<?>>(CtClass.class)).forEach(c -> System.out.println(c.getQualifiedName()));
 		if (!(element.getElements(new TypeFilter<CtPackage>(CtPackage.class)).size() > 1) && (element.getElements(new TypeFilter<CtClass<?>>(CtClass.class)).size() > 0)) {
 			String packag = element.getQualifiedName();
-			if (!packag.equals("") && !CommonStatic.mapPackage.containsKey(packag)) {
-				CommonStatic.mapPackage.put(packag, CommonStatic.compteurPackage);
+			if (!packag.equals("") && !CommonStatic.MAP_PACKAGE.containsKey(packag)) {
+				CommonStatic.MAP_PACKAGE.put(packag, CommonStatic.COMPTEUR_PACKAGE);
 			}
 
-			CommonStatic.compteurPackage++;
-			int k = CommonStatic.compteurPackage;
-			for (String str : CommonStatic.mapPackage.keySet()) {
+			CommonStatic.COMPTEUR_PACKAGE++;
+			int k = CommonStatic.COMPTEUR_PACKAGE;
+			for (String str : CommonStatic.MAP_PACKAGE.keySet()) {
 				if (element.getSimpleName().contains(str)) {
 					for (CtTypeReference t : element.getReferencedTypes()) {
 						if (!t.isPrimitive() && t.getPackage() != null
-								&& CommonStatic.mapPackage.containsKey(t.getPackage().getSimpleName())) {
+								&& CommonStatic.MAP_PACKAGE.containsKey(t.getPackage().getSimpleName())) {
 							lst.add(t.getPackage().getSimpleName());
 						}
 					}
 				}
 			}
-			CommonStatic.compteurPackage = k;
+			CommonStatic.COMPTEUR_PACKAGE = k;
 
 			Iterator<String> i = PackageProcess.lst.iterator();
 			while (i.hasNext()) {
-				CommonStatic.mapPackage.put(i.next(), CommonStatic.compteurPackage++);
+				CommonStatic.MAP_PACKAGE.put(i.next(), CommonStatic.COMPTEUR_PACKAGE++);
 			}
 		}
 	}

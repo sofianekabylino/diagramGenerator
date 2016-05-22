@@ -16,14 +16,14 @@ public class AmeliorationJSONs {
 	public static JSONArray last = new JSONArray();
 
 	public static void supprimerClasseSeul() throws JSONException {
-		Set<CtTypeReference> key = CommonStatic.mapClasses.keySet();
+		Set<CtTypeReference> key = CommonStatic.MAP_CLASSES.keySet();
 		List<Integer> aSupprimer = new ArrayList<Integer>();
 
 		for (CtTypeReference k : key) {
-			int val = CommonStatic.mapClasses.get(k);
+			int val = CommonStatic.MAP_CLASSES.get(k);
 			if (!GenerateLinkBetweenClassesProcessor.listeClassesUtilisees.contains(val)) {
 				//System.out.println("On peut enlever la classe : " + k);
-				aSupprimer.add(CommonStatic.mapClasses.get(k));
+				aSupprimer.add(CommonStatic.MAP_CLASSES.get(k));
 			}
 		}
 

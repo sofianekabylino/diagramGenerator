@@ -1,6 +1,5 @@
 package processors;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +21,9 @@ public class GenerateLinkBetweenClassesProcessor extends AbstractProcessor<CtCla
 	public static boolean[][] alreadyFound;
 	public static Set<Integer> listeClassesUtilisees = new HashSet<Integer>();
 
-	@Override
 	public void process(CtClass classe) {
 		Map<CtTypeReference, Integer> map = AnalyseProcessorClasses.map;
-		alreadyFound = new boolean[CommonStatic.compteurClass][CommonStatic.compteurClass];
+		alreadyFound = new boolean[CommonStatic.COMPTEUR_CLASS][CommonStatic.COMPTEUR_CLASS];
 
 		// On regarde les super classes
 		if (classe.getSuperclass() != null) {

@@ -17,18 +17,18 @@ public class PackagesDependenciesProcess extends AbstractProcessor<CtPackage> {
 
 		String packag = element.getQualifiedName();
 
-		for (String str : CommonStatic.mapPackage.keySet()) {
+		for (String str : CommonStatic.MAP_PACKAGE.keySet()) {
 			if (packag.contains(str)) {
 				// liste des type réferencés par chaque classe
 				for (CtTypeReference t : element.getReferencedTypes()) {
 					if (!t.isPrimitive() && t.getPackage() != null
-							&& CommonStatic.mapPackage.containsKey(t.getPackage().getSimpleName())) {
+							&& CommonStatic.MAP_PACKAGE.containsKey(t.getPackage().getSimpleName())) {
 						if (!str.equals(t.getPackage().getSimpleName())) {
 							List<Integer> lstDep = new LinkedList<Integer>();
-							lstDep.add(CommonStatic.mapPackage.get(str));
-							lstDep.add(CommonStatic.mapPackage.get(t.getPackage().getSimpleName()));
-							if (!CommonStatic.mapDependencies.contains(lstDep)) {
-								CommonStatic.mapDependencies.add(lstDep);
+							lstDep.add(CommonStatic.MAP_PACKAGE.get(str));
+							lstDep.add(CommonStatic.MAP_PACKAGE.get(t.getPackage().getSimpleName()));
+							if (!CommonStatic.MAP_DEPENDENCIES.contains(lstDep)) {
+								CommonStatic.MAP_DEPENDENCIES.add(lstDep);
 							}
 						}
 					}

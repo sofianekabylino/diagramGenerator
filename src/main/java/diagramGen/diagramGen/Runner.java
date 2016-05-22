@@ -5,7 +5,6 @@ import processors.AnalyseProcessorInterfaces;
 import processors.GenerateLinkBetweenClassesProcessor;
 import processors.PackageProcess;
 import processors.PackagesDependenciesProcess;
-import processors.TestProcessor;
 import spoon.Launcher;
 
 public class Runner {

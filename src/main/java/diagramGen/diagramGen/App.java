@@ -2,30 +2,33 @@ package diagramGen.diagramGen;
 
 import java.net.URISyntaxException;
 
-import filesGenerator.HtmlFileGen;
-import filesGenerator.JsClassDiagramFileGen;
-import filesGenerator.JsFileGen;
-import spoon.reflect.reference.CtTypeReference;
+import filesGenerator.FileGenerator;
 
 /**
- * Hello world!
+ * Main class
+ * @author sofianekabylino
  *
  */
 public class App {
+	
+	/**
+	 * main
+	 * @param args
+	 * @throws InterruptedException
+	 * @throws URISyntaxException
+	 */
 	public static void main(String[] args) throws InterruptedException, URISyntaxException {
 
 		Runner.run();
 		
-		JSONArrayCreator j = new JSONArrayCreator();
+		final JSONArrayCreator j = new JSONArrayCreator();
 		j.createJsonArray();
 
 		// Génération des fichiers
-		JsFileGen.jsFileGen();
-		JsClassDiagramFileGen.jsClassDiagramFileGen();
-		HtmlFileGen.htmlFileGen();
+		FileGenerator.generatePackageDependenciesJsFile();
+		FileGenerator.generateClassDiagramJsFile();;
+		FileGenerator.generateHtmlFile();
 
-		System.out.println(JSONArrayCreator.jaPackages);
-//		System.out.println(JSONArrayCreator.jaDependencies);
 		BrowserLauncher.launchBrowser();
 
 	}

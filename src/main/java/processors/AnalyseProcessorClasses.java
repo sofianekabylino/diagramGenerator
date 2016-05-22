@@ -29,7 +29,7 @@ public class AnalyseProcessorClasses extends AbstractProcessor<CtClass> {
 			Set<CtMethod> methods = classe.getMethods();
 			JSONObject json = new JSONObject();
 			try {
-				json.put("key", CommonStatic.compteurClass);
+				json.put("key", CommonStatic.COMPTEUR_CLASS);
 				json.put("name", classe.getSimpleName());
 				JSONArray properties = new JSONArray();
 				for (CtField field : fields) {
@@ -54,8 +54,8 @@ public class AnalyseProcessorClasses extends AbstractProcessor<CtClass> {
 				json.put("methods", methodsJson);
 
 				array.put(json);
-				map.put(classe.getReference(), CommonStatic.compteurClass);
-				CommonStatic.compteurClass++;
+				map.put(classe.getReference(), CommonStatic.COMPTEUR_CLASS);
+				CommonStatic.COMPTEUR_CLASS++;
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
